@@ -5,10 +5,8 @@ let upgrades = {
     upgrade3: { cost: 100, level: 0, autoIncome: 10 },
     upgrade4: { cost: 500, level: 0, autoIncome: 20 },
     upgrade5: { cost: 2000, level: 0, autoIncome: 50 },
-    // Lisää muita päivityksiä samalla tavalla...
-};
+    };
 
-// Ladataan tiedot localStorage:sta, jos ne on tallennettu aiemmin
 function loadGame() {
     if (localStorage.getItem('money')) {
         money = parseInt(localStorage.getItem('money'));
@@ -39,7 +37,7 @@ Object.keys(upgrades).forEach(function(upgradeKey) {
         if (money >= upgrade.cost) {
             money -= upgrade.cost;
             upgrade.level += 1;
-            upgrade.cost = Math.floor(upgrade.cost * 1.5); // Hinta kasvaa 1.5x
+            upgrade.cost = Math.floor(upgrade.cost * 1.5);
             activateAutoIncome(upgrade);
             updateMoneyDisplay();
             updateCurrentUpgrades();
@@ -74,5 +72,4 @@ function updateCurrentUpgrades() {
     });
 }
 
-// Ladataan pelin tiedot sivun latauksen yhteydessä
 loadGame();
